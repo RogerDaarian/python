@@ -1,0 +1,41 @@
+import random
+
+game = "Go"
+while game != "over":
+    quest = random.randint(1, 100)
+    print("Добро пожаловать в числовую угадайку")
+
+    def is_valid(num):
+        if num.isdigit() == True:
+            return True
+        else:
+            return False
+
+    flag = False
+    count = 0
+    while flag != True:
+        number = input("От 1 до 100: ")
+        if is_valid(number) != True:
+            print("А может быть все-таки введем целое число от 1 до 100?")
+        elif is_valid(number) == True:
+            count += 1
+            number = int(number)
+            if number < quest:
+                print('Ваше число меньше загаданного, попробуйте еще разок')
+            elif number > quest:
+                print('Ваше число больше загаданного, попробуйте еще разок')
+            else:
+                print('Вы угадали, поздравляем! Вы угадали с', count, 'раза!')
+                flag = True
+    answer = input("Сыграем ещё разок? Yes or No? ")
+    n = 0
+    while n != 1:
+        if answer == "No" or answer == "NO" or answer == "no":
+            game = "over"
+            print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
+            n = 1
+        elif answer == "Yes" or answer == "YES" or answer == "yes":
+            print("Тогда ещё разок!")
+            n = 1
+        else:
+            answer = input("Yes or No? ")
